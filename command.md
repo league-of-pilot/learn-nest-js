@@ -10,6 +10,8 @@ npx @nestjs/cli new nestjs-crash-course
 nest g module user
 -> gen template module user
 -> g chứ ko phải -g
+nest g co user --no-spec
+-> generate controller
 
 # Model
 
