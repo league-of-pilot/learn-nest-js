@@ -13,6 +13,8 @@ nest g module user
 nest g co user --no-spec
 -> generate controller
 
+Nest có hỗ trợ hot reload --watch
+
 # Model
 
 User:
