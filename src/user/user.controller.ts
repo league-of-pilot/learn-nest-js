@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller, Get, Param } from '@nestjs/common'
 
 @Controller('user')
 // api : /user
@@ -8,10 +8,14 @@ export class UserController {
     return 'all users'
   }
 
-  @Get('1')
+  @Get(':id')
   //   ko được trùng method
   //   api : /user/1
-  find(): string {
-    return 'user 1'
+  find(@Param('id') id: string) {
+    return {
+      user: {
+        id
+      }
+    }
   }
 }
