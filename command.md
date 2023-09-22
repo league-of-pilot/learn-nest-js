@@ -4,6 +4,8 @@ https://www.youtube.com/watch?v=Hv70fn8xTL4&list=PLkcjSbKkQ5_LE7g1vjrSQK-Ns4doCE
 
 # Command
 
+npm i --save class-validator class-transformer
+
 ## Using npx without global install
 
 npx @nestjs/cli new nestjs-crash-course
@@ -36,3 +38,21 @@ Comment:
 - text
 - user_id
 - topic_id
+
+# Demo JSON data for Insomnia
+
+{{host}}/user/create
+
+{
+"name": "Danh",
+"email": 2134213213,
+"kekee": "someibgfi",
+"more": "34232553"
+}
+
+{
+"name": "Danh",
+"email": "test@gmail.com",
+"more": "someibgfi",
+"phone": "34232553"
+}

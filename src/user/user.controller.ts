@@ -1,4 +1,5 @@
-import { Controller, Get, Param, Post } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post } from '@nestjs/common'
+import { CreateUserDto } from './dto/createUserDto'
 
 @Controller('user')
 // api : /user
@@ -19,8 +20,21 @@ export class UserController {
     }
   }
 
+  // https://docs.nestjs.com/controllers
+  // https://docs.nestjs.com/custom-decorators
   @Post()
-  create() {
-    return 'create user'
+  create(@Body('name') nameRepresent: string) {
+    return `the text is ${nameRepresent}`
+  }
+
+  @Post('any')
+  createAny(@Body() dummyName: any) {
+    return dummyName
+  }
+
+  @Post('create')
+  createDto(@Body() userDto: CreateUserDto) {
+    // nếu chỉ viết thuần thì không có validate
+    return userDto
   }
 }
