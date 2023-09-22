@@ -9,11 +9,15 @@ npm i --save class-validator class-transformer
 ## Using npx without global install
 
 npx @nestjs/cli new nestjs-crash-course
+
 nest g module user
 -> gen template module user
 -> g chứ ko phải -g
+
+nest g s user --no-spec
+-> generate service
+
 nest g co user --no-spec
--> generate controller
 
 Nest có hỗ trợ hot reload --watch
 
