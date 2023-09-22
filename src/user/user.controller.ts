@@ -1,9 +1,12 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { CreateUserDto } from './dto/createUserDto'
+import { UserService } from './user.service'
 
 @Controller('user')
 // api : /user
 export class UserController {
+  constructor(private readonly userService: UserService) {}
+
   @Get()
   findAll(): string {
     return 'all users'
@@ -18,6 +21,11 @@ export class UserController {
         id
       }
     }
+  }
+
+  @Get('find/:id')
+  findOne(@Param('id') id: string) {
+    return this.userService.findOne(id)
   }
 
   // https://docs.nestjs.com/controllers
