@@ -45,4 +45,11 @@ export class UserController {
     // nếu chỉ viết thuần thì không có validate
     return userDto
   }
+
+  @Post('createByService')
+  createByService(@Body() userDto: CreateUserDto) {
+    // Nếu validation fail thì ko chạy vô đoạn controller này luôn
+    console.count('🚀🚀 pre create by service')
+    return this.userService.create(userDto)
+  }
 }
