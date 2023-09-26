@@ -13,8 +13,10 @@ import { Comment } from './comment.entities'
 // nhưng bỏ trống ko sao
 export class User {
   @PrimaryGeneratedColumn()
+  // Dù ép kiểu là string nhưng qua decorator trên lại trả về number
   id: string
 
+  // Do thuộc tính unique nên sẽ ko thể tạo được name hoặc email đã có sẵn
   @Column({ unique: true, nullable: false })
   name: string
 
