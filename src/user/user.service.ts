@@ -19,12 +19,27 @@ export class UserService {
 
   // validate sẽ chặn vào service
   // how to log validator request validtor bị chặn ?
-  create(userDto: CreateUserDto) {
+  createDummy(userDto: CreateUserDto) {
     console.count('🚀🚀 inside create by service')
     return userDto
   }
 
   async findOne(id: string) {
     return await this.userRepo.findOne({ where: { id: id } })
+  }
+
+  async create(userDto: CreateUserDto) {
+    const user = this.userRepo.create(userDto)
+    // Bước create này vẫn chưa insert vào, nếu log ở đây sẽ thấy dc raw password
+    // id lúc này cũng chưa được generate
+    // console.log('🚀 user.service L33-user', user, user.id, typeof user.id)
+    const savedUser = await this.userRepo.save(user)
+    console.log(
+      '🚀 user.service L37-savedUser',
+      savedUser,
+      savedUser.id,
+      typeof savedUser.id // log sẽ ra number dù đang ép trong code BE là string!!!
+    )
+    return savedUser
   }
 }
