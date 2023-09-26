@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { User } from 'src/entities/user.entity'
 import { Repository } from 'typeorm'
 import { CreateUserDto } from './dto/createUserDto'
+import { UpdateUserDto } from './dto/updateUserDto'
 
 @Injectable()
 export class UserService {
@@ -41,5 +42,9 @@ export class UserService {
       typeof savedUser.id // log sẽ ra number dù đang ép trong code BE là string!!!
     )
     return savedUser
+  }
+
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    return this.userRepo.update(id, updateUserDto)
   }
 }
