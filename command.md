@@ -60,3 +60,10 @@ Comment:
 "more": "someibgfi",
 "phone": "34232553"
 }
+
+# Setup PostgresDB
+
+npm install --save @nestjs/typeorm typeorm pg
+
+This is for mySQL
+npm install --save @nestjs/typeorm typeorm mysql2
