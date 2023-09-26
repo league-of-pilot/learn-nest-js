@@ -29,6 +29,10 @@ export class UserService {
     return await this.userRepo.findOne({ where: { id: id } })
   }
 
+  async findOneWithUserName(userName: string) {
+    return await this.userRepo.findOne({ where: { email: userName } })
+  }
+
   async create(userDto: CreateUserDto) {
     const user = this.userRepo.create(userDto)
     // Bước create này vẫn chưa insert vào, nếu log ở đây sẽ thấy dc raw password
