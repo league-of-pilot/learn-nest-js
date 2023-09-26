@@ -1,6 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
-import { Topic } from './topic.entities'
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { User } from './user.entity'
+import { Topic } from './topic.entities'
 
 @Entity()
 export class Comment {
@@ -10,6 +10,11 @@ export class Comment {
   @Column()
   text: string
 
+  // @ManyToOne((type) => User, (user) => user.id)
+  // Có thể viết theo cách trên
+  // ko nhất thiết phải define relation ở cả 2 bên
+  // Tuy nhiên muốn user access comment thì phải define relation ở cả 2 bên
+  @ManyToOne((type) => User, (user) => user.comments)
   user: User
 
   topic: Topic

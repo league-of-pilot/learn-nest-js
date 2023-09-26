@@ -1,5 +1,12 @@
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from 'typeorm'
 import * as bcrypt from 'bcrypt'
+import { Comment } from './comment.entities'
 
 @Entity()
 // có thể truyền tên của table trong postgresql vào Entity
@@ -16,6 +23,9 @@ export class User {
 
   @Column({ nullable: false })
   password: string
+
+  @OneToMany((type) => Comment, (comment) => comment.user)
+  comments: Comment[]
 
   @BeforeInsert()
   async hashPassword() {
